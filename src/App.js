@@ -1,6 +1,10 @@
 import './App.css';
 import { useState } from 'react'
 
+//Components 
+import Score from './components/score/index';
+import QuestionBox from './components/question-box';
+
 const questions = [
   {
     questionsText: "O que é?",
@@ -19,7 +23,7 @@ const questions = [
       {answerText: "34", isCorrect: false},
       {answerText: "45", isCorrect: false},
     ],
-  }
+  },
 ];
 
 function App() {
@@ -43,27 +47,16 @@ function App() {
   return (
     <div className='app'>
       {showScore ? (
-        <div className='score-section'>
-          Você pontuou {score} de {questions.length}
-        </div>
+        <Score 
+        score={score} 
+        questions={questions}
+        />
       ) : (
-        <>
-          <div className='question-section'>
-            <div className='question-count'>
-            <span>Questão {currentQuestion + 1}</span>/{questions.length}
-            </div>
-            <div className='question-text'>
-              {questions[currentQuestion].questionsText}
-            </div>
-          </div>
-          <div className='answer-section'>
-            {questions[currentQuestion].answerOptions.map((answerOptions, index) => (
-              <button onClick={() => handleAnswer(answerOptions.isCorrect)} key={index}> 
-                {answerOptions.answerText}
-              </button>
-            ))}
-          </div>
-        </>
+        <QuestionBox
+        currentQuestion={currentQuestion}
+        questions={questions}
+        onClick={(isCorrect) => handleAnswer(isCorrect)}
+        />
       )}
     </div>
   );
