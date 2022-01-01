@@ -1,30 +1,10 @@
 import './App.css';
 import { useState } from 'react'
+import questions from './data/database';
 
 //Components 
 import Score from './components/score/index';
 import QuestionBox from './components/question-box';
-
-const questions = [
-  {
-    questionsText: "O que é?",
-    answerOptions: [
-      {answerText: "1", isCorrect: true},
-      {answerText: "2", isCorrect: false},
-      {answerText: "3", isCorrect: false},
-      {answerText: "4", isCorrect: false},
-    ],
-  },
-  {
-    questionsText: "O que é e?",
-    answerOptions: [
-      {answerText: "12", isCorrect: true},
-      {answerText: "23", isCorrect: false},
-      {answerText: "34", isCorrect: false},
-      {answerText: "45", isCorrect: false},
-    ],
-  },
-];
 
 function App() {
   const [showScore, setShowScore] = useState(false);
